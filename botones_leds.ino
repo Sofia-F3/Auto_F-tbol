@@ -2,10 +2,10 @@
 #define BOT2 9
 #define BOT3 8
 #define BOT4 7
-#define LED1 6
-#define LED2 5
-#define LED3 4
-#define LED4 3
+#define LED1 3
+#define LED2 4
+#define LED3 6
+#define LED4 5
 
 void setup() {
   pinMode(BOT1, INPUT_PULLUP);
