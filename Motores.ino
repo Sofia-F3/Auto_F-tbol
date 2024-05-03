@@ -1,13 +1,19 @@
-#define A1 7
-#define A2 4
-#define B1 2
-#define B2 3
+#define IN1 7
+#define IN2 8
+#define IN3 4
+#define IN4 5
+#define EN 6
+#define EN2 3
 
 void setup() {
-  pinMode(A2, OUTPUT);
-  pinMode(A1, OUTPUT);
-  pinMode(B2, OUTPUT);
-  pinMode(B1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN4, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(EN, OUTPUT);
+  pinMode(EN2, OUTPUT);
+  digitalWrite(EN, HIGH);
+  digitalWrite(EN2, HIGH);
 }
 
 void loop() {
@@ -21,37 +27,37 @@ void loop() {
   delay(2000);
 }
 
-void adelante(){
-  digitalWrite(A1, LOW);
-  digitalWrite(A2, HIGH);
-  digitalWrite(B1, LOW);
-  digitalWrite(B2, HIGH);
-}
-
-void atras(){
-  digitalWrite(A1, HIGH);
-  digitalWrite(A2, LOW);
-  digitalWrite(B1, HIGH);
-  digitalWrite(B2, LOW);
+void derecha(){
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
 }
 
 void izquierda(){
-  digitalWrite(A1, LOW);
-  digitalWrite(A2, HIGH);
-  digitalWrite(B1, HIGH);
-  digitalWrite(B2, LOW);
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
 }
 
-void derecha(){
-  digitalWrite(A1, HIGH);
-  digitalWrite(A2, LOW);
-  digitalWrite(B1, LOW);
-  digitalWrite(B2, HIGH);
+void adelante(){
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void atras(){
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
 }
 
 void freno(){
-  digitalWrite(A1, LOW);
-  digitalWrite(A2, LOW);
-  digitalWrite(B1, LOW);
-  digitalWrite(B2, LOW);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
 }
