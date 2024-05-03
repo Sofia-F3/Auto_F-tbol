@@ -1,12 +1,14 @@
 #include <SoftwareSerial.h>
 #include <TimerOne.h>
 
-#define A1 7
-#define A2 4
-#define B1 2
-#define B2 3
-#define TXD 10
-#define RXD 11
+#define IN1 7
+#define IN2 8
+#define IN3 4
+#define IN4 5
+#define EN 6
+#define EN2 3
+#define TXD 11
+#define RXD 10
 
 SoftwareSerial BT(TXD, RXD);
 
@@ -22,10 +24,14 @@ void TIMER() {
 }
 
 void setup() {
-  pinMode(A1, OUTPUT);
-  pinMode(A2, OUTPUT);
-  pinMode(B1, OUTPUT);
-  pinMode(B2, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN4, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(EN, OUTPUT);
+  pinMode(EN2, OUTPUT);
+  digitalWrite(EN, HIGH);
+  digitalWrite(EN2, HIGH);
   Serial.begin(9600);
   BT.begin(9600);
   Timer1.initialize(1000);
@@ -69,37 +75,37 @@ void maquinaAuto() {
   }
 }
 
-void Forward() {
-  digitalWrite(A1, LOW);
-  digitalWrite(A2, HIGH);
-  digitalWrite(B1, LOW);
-  digitalWrite(B2, HIGH);
+void Right(){
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
 }
 
-void Back() {
-  digitalWrite(A1, HIGH);
-  digitalWrite(A2, LOW);
-  digitalWrite(B1, HIGH);
-  digitalWrite(B2, LOW);
+void Left(){
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
 }
 
-void Left() {
-  digitalWrite(A1, LOW);
-  digitalWrite(A2, HIGH);
-  digitalWrite(B1, HIGH);
-  digitalWrite(B2, LOW);
+void Forward(){
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
 }
 
-void Right() {
-  digitalWrite(A1, HIGH);
-  digitalWrite(A2, LOW);
-  digitalWrite(B1, LOW);
-  digitalWrite(B2, HIGH);
+void Back(){
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
 }
 
-void Stop() {
-  digitalWrite(A1, LOW);
-  digitalWrite(A2, LOW);
-  digitalWrite(B1, LOW);
-  digitalWrite(B2, LOW);
+void Stop(){
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
 }
