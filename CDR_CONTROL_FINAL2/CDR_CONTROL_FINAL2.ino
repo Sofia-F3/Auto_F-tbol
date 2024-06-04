@@ -1,5 +1,4 @@
 #include <SoftwareSerial.h>
-#include <TimerOne.h>
 
 #define BOT1 2
 #define BOT2 3
@@ -12,22 +11,13 @@
 #define JS_BOT 12
 #define VRY A0
 #define VRX A1
-#define TXD 10
-#define RXD 11
+#define TXD 11
+#define RXD 10
 
 SoftwareSerial BT(TXD, RXD);
 
-#define INIT 0
-#define MANUAL 1
-int estadoControl = 0;
-int mSeg = 0;
-
 int x;
 int y;
-
-void TIMER() {
-  mSeg++;
-}
 
 void setup() {
   pinMode(BOT1, INPUT_PULLUP);
@@ -43,27 +33,10 @@ void setup() {
   pinMode(VRX, INPUT);
   BT.begin(9600);
   Serial.begin(9600);
-  Timer1.initialize(1000);
-  Timer1.attachInterrupt(TIMER);
 }
 
 void loop() {
-  maquinaControl();
-  Serial.println(estadoControl);
-}
-
-void maquinaControl() {
-  switch (estadoControl) {
-    case INIT:
-      if (mSeg <= 3000){
-        estadoControl = MANUAL;
-      }
-      break;
-
-    case MANUAL:
-      enviarBT();
-      break;
-  }
+  enviarBT();
 }
 
 void enviarBT() {
