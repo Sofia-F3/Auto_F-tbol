@@ -1,6 +1,6 @@
 #include <SoftwareSerial.h>
-#define TXD 11
-#define RXD 10
+#define TXD 10
+#define RXD 11
 
 SoftwareSerial modu(TXD, RXD);
 
@@ -20,6 +20,5 @@ void loop() {
   //IMPORTANTE: PARA USAR EL SIGUIENTE CÓDIGO SERIAL Y MODU DEBEN ESTAR A 9600 :
     if (Serial.available()){
       modu.write(Serial.read());
-      //delay(1000);
     }
 }

@@ -11,10 +11,6 @@
 
 SoftwareSerial BT(TXD, RXD);
 
-#define INIT 0
-#define MANUAL 1
-#define AUTO 2
-int estadoAuto = 0;
 char data;
 
 void setup() {
@@ -33,25 +29,30 @@ void setup() {
 void loop() {
   if (BT.available()) {
     data = BT.read();
-    Serial.println(data);
+    
   }
   maquinaAuto();
 }
 
 void maquinaAuto() {
   if (data == 'S') {
+    Serial.println(data);
     Stop();
   }
   if (data == 'R') {
+    Serial.println(data);
     Right();
   }
   if (data == 'L') {
+    Serial.println(data);
     Left();
   }
   if (data == 'F') {
+    Serial.println(data);
     Forward();
   }
   if (data == 'B') {
+    Serial.println(data);
     Back();
   }
 }
