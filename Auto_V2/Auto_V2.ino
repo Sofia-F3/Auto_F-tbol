@@ -1,3 +1,6 @@
+#include <SoftwareSerial.h>
+#define TXD 10
+#define RXD 11
 #define IN1 7
 #define IN2 8
 #define IN3 4
@@ -5,7 +8,13 @@
 #define EN1 6
 #define EN2 3
 
+SoftwareSerial modu(TXD, RXD);
+char accion;
+
 void setup() {
+  modu.begin(9600);
+  Serial.begin(9600);
+
   pinMode(IN2, OUTPUT);
   pinMode(IN1, OUTPUT);
   pinMode(IN4, OUTPUT);
@@ -17,38 +26,51 @@ void setup() {
 }
 
 void loop() {
-  adelante();
-  delay(2000);
-  atras();
-  delay(2000);
-  izquierda();
-  delay(2000);
-  derecha();
-  delay(2000);
+  //IMPORTANTE: SERIAL Y MODU A 9600
+  if (modu.available()) {
+    accion = modu.read();
+  }
+  switch (accion) {
+    case 'f':
+      adelante();
+      break;
+    case 'b':
+      atras();
+      break;
+    case 'l':
+      izquierda();
+      break;
+    case 'r':
+      derecha();
+      break;
+    case 's':
+      freno();
+      break;
+  }
 }
 
-void adelante(){
+void adelante() {
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
 }
 
-void atras(){
+void atras() {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
 }
 
-void derecha(){
+void derecha() {
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
 }
 
-void izquierda(){
+void izquierda() {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
   digitalWrite(IN3, HIGH);
@@ -56,7 +78,7 @@ void izquierda(){
 }
 
 
-void freno(){
+void freno() {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, LOW);
