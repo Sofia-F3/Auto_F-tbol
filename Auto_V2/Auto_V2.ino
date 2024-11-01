@@ -9,7 +9,7 @@
 #define EN2 3
 
 SoftwareSerial modu(TXD, RXD);
-char accion;
+char accion = 's';
 
 void setup() {
   modu.begin(9600);
@@ -30,6 +30,7 @@ void loop() {
   if (modu.available()) {
     accion = modu.read();
   }
+  Serial.println(accion);
   switch (accion) {
     case 'f':
       adelante();
