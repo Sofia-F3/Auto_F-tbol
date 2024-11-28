@@ -64,14 +64,14 @@ void izquierda() {
   digitalWrite(IN4, HIGH);
 }
 
-void atras() {
+void adelante() {
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
 }
 
-void adelante() {
+void atras() {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
   digitalWrite(IN3, HIGH);
